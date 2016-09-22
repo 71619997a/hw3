@@ -6,7 +6,15 @@
   </head>
 
   <body>
-    <h1>Chosen Occupation: <b>{{ occupation }}</b></h1>
+    <h1>Chosen Occupation: <b>{{ occupation }}</b></h1><br>
+    <table>
+    {% for row in table %}
+      <tr>
+      {% for i in row %}
+        <td>{{ i }}</td>
+      {% endfor %}
+      </tr>
+    {% endfor %}
   </body>
 
 </html>

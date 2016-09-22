@@ -30,8 +30,8 @@ def randomOccupation():
     occupations = read_csv("occupations.csv")
     #print (occupations)
     keys = occupations.keys()
-    values = occupations.values()
-    randomInt = random.uniform(0.0,99.7) #99.8 sometimes may break, this is guaranteed to work
+    values = [occupations[i] for i in keys]
+    randomInt = random.uniform(0.0,99.8)
     dictIterator = 0
     dictTotal = 0
     while (dictIterator < len(keys) - 1):
@@ -42,7 +42,7 @@ def randomOccupation():
         else:
             dictIterator += 1
         if (randomInt < dictTotal):
-            return render_template("occupations.html", occupation=keys[dictIterator - 1])
+            return render_template("occupations.html", occupation=keys[dictIterator - 1], table=zip(keys, values))
 
 
 if __name__ == '__main__':
