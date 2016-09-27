@@ -27,7 +27,7 @@ def read_csv(filename):
 
 @app.route('/occupations')
 def randomOccupation():
-    occupations = read_csv("occupations.csv")
+    occupations = read_csv("data/occupations.csv")
     #print (occupations)
     keys = occupations.keys()
     values = [occupations[i] for i in keys]
@@ -42,7 +42,7 @@ def randomOccupation():
         else:
             dictIterator += 1
         if (randomInt < dictTotal):
-            return render_template("occupations.html", occupation=keys[dictIterator - 1], table=zip(keys, values))
+            return {'occupation':keys[dictIterator - 1], 'table':zip(keys, values)}
 
 
 if __name__ == '__main__':
@@ -81,4 +81,3 @@ if __name__ == '__main__':
 ##        if (randomInt < dictTotal):
 ##            print ("Your random occupation is: " + occupations.keys().index([occupations.values().index(occupations.values()[dictIterator - 1])]) + ".")
 ##            #return (occupations.keys()[occupations.values().index(occupations.values()[dictIterator])])
-            
